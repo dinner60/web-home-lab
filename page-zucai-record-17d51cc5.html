@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>足彩网 · 赛事数据与投注知识平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f7f8fa;
+            color: #1e1f2a;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 56px 24px 80px;
+        }
+
+        /* ---- hero ---- */
+        .hero {
+            margin-bottom: 56px;
+        }
+
+        .hero__badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            color: #6b6e85;
+            background: #eef0f4;
+            padding: 4px 14px;
+            border-radius: 100px;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 550;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: #0a0b14;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #3d4059;
+            max-width: 660px;
+            margin-bottom: 12px;
+        }
+
+        .hero .lead {
+            font-size: 1.05rem;
+            color: #51546b;
+        }
+
+        .hero .lead a {
+            color: #1e1f2a;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 1.5px;
+            text-decoration-color: #9ea0b5;
+            font-weight: 500;
+            transition: color 0.2s, text-decoration-color 0.2s;
+        }
+
+        .hero .lead a:hover {
+            color: #000;
+            text-decoration-color: #000;
+        }
+
+        /* ---- 通用分隔 ---- */
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 530;
+            letter-spacing: -0.015em;
+            color: #0a0b14;
+            margin-bottom: 14px;
+            padding-top: 10px;
+        }
+
+        .section-sub {
+            color: #3d4059;
+            margin-bottom: 28px;
+        }
+
+        /* ---- 优势区：无卡片，纯文字留白 ---- */
+        .advantage-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+
+        .advantage-item {
+            border-left: 3px solid #d8dae3;
+            padding-left: 20px;
+        }
+
+        .advantage-item h3 {
+            font-size: 1.05rem;
+            font-weight: 510;
+            margin-bottom: 4px;
+            color: #0a0b14;
+        }
+
+        .advantage-item p {
+            color: #4c4f68;
+            font-size: 0.95rem;
+        }
+
+        /* ---- 说明区（知识向） ---- */
+        .explain-block {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 28px 32px;
+            margin-bottom: 48px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02), 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .explain-block p {
+            margin-bottom: 16px;
+            color: #2f3143;
+        }
+
+        .explain-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .inline-link {
+            color: #1e1f2a;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 1.5px;
+            text-decoration-color: #b7b9cc;
+            font-weight: 500;
+            transition: color 0.2s, text-decoration-color 0.2s;
+        }
+
+        .inline-link:hover {
+            color: #000;
+            text-decoration-color: #000;
+        }
+
+        /* ---- FAQ 摘要 ---- */
+        .faq-summary {
+            margin-bottom: 48px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e4e5ed;
+            padding: 16px 0;
+        }
+
+        .faq-item:first-child {
+            padding-top: 0;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #0a0b14;
+            margin-bottom: 4px;
+            font-size: 1rem;
+        }
+
+        .faq-a {
+            color: #4f526b;
+            font-size: 0.92rem;
+        }
+
+        .faq-a a {
+            color: #1e1f2a;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #b7b9cc;
+            font-weight: 500;
+        }
+
+        .faq-a a:hover {
+            color: #000;
+            text-decoration-color: #000;
+        }
+
+        /* ---- 底部链接 ---- */
+        .footer-links {
+            border-top: 1px solid #e0e2ea;
+            padding-top: 28px;
+            margin-top: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 28px;
+            font-size: 0.88rem;
+            color: #4f526b;
+        }
+
+        .footer-links a {
+            color: #2e3145;
+            text-decoration: none;
+            border-bottom: 1px solid #cfd1dd;
+            padding-bottom: 1px;
+            transition: border-color 0.2s;
+        }
+
+        .footer-links a:hover {
+            border-bottom-color: #1e1f2a;
+        }
+
+        .footer-links .ft-muted {
+            color: #767a93;
+        }
+
+        /* ---- 响应式 ---- */
+        @media (max-width: 540px) {
+            .page {
+                padding: 36px 18px 60px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .explain-block {
+                padding: 20px 18px;
+            }
+
+            .advantage-item {
+                padding-left: 14px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- hero -->
+        <div class="hero">
+            <div class="hero__badge">赛事数据 · 投注知识</div>
+            <h1>重新理解竞猜<br>从数据与逻辑开始</h1>
+            <p class="lead">
+                围绕欧洲五大联赛、亚洲赛事及全球焦点对决，<a href="https://page-zucai.com">足彩网</a> 
+                提供结构化的赛前情报、历史对阵趋势与赔率变动记录。不渲染玄学，只呈现可追溯的信息。
+            </p>
+            <p class="lead" style="margin-top: 4px;">
+                无论你是刚接触竞猜的新手，还是希望系统梳理分析框架的爱好者，都可以在这里找到平实、连贯的知识脉络。
+            </p>
+        </div>
+
+        <!-- 优势区：信息组织方式 -->
+        <div>
+            <h2 class="section-title">信息组织方式</h2>
+            <div class="advantage-grid">
+                <div class="advantage-item">
+                    <h3>赛事档案 · 非碎片化</h3>
+                    <p>每场比赛汇总近期战绩、伤停情况、主客场差异，以及同赔率下的历史表现，避免信息孤岛。</p>
+                </div>
+                <div class="advantage-item">
+                    <h3>赔率变化时间轴</h3>
+                    <p>记录主流机构从开盘到临场的赔率调整路径，辅助判断市场情绪的偏移与共识形成。</p>
+                </div>
+                <div class="advantage-item">
+                    <h3>知识单元 · 可组合</h3>
+                    <p>从「平赔分布」到「大小球临界值」，每个概念独立成篇，方便按需查阅，逐步搭建自己的分析体系。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 说明区：从数据认知切入 -->
+        <div class="explain-block">
+            <p>
+                竞猜的核心困难，往往不在于缺少信息，而在于信息过载且缺乏结构。每一次投注决策背后，都隐含着对概率、价值与心理偏差的认知。<a href="https://page-zucai.com" class="inline-link">足彩网</a> 尝试做减法：将庞杂的赛前新闻转化为可比较的数据维度，把赔率变化还原为可观察的博弈过程。
+            </p>
+            <p>
+                我们相信，长期视角下的统计规律，比短期直觉更值得信赖。例如，一支球队在连续一周双赛后的客场赢盘率，往往比表面实力差更值得关注。这类跨场次的结构性信息，正是平台希望持续积累的内容类型。
+            </p>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="faq-summary">
+            <h2 class="section-title">常见疑问摘要</h2>
+
+            <div class="faq-item">
+                <div class="faq-q">竞猜分析需要关注哪些基础数据？</div>
+                <div class="faq-a">至少应包含近期战绩（含赢盘率）、主客场差异、关键球员伤停、交锋记录。进阶可以观察赔率变动的时间节点与幅度。具体维度在 <a href="https://page-zucai.com">足彩网</a> 赛事页面有分类展示。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">赔率变化是否总能反映真实信息？</div>
+                <div class="faq-a">不一定。赔率同时受投注量、机构风控策略和市场预期影响。变化本身是信号，但需要结合赛前阵容信息和资金流向来交叉验证。平台提供了变化对照表，可辅助判断。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">新手应该从哪个模块开始阅读？</div>
+                <div class="faq-a">建议先浏览「知识库」中的基础概念，如盘口类型、水位含义、大小球逻辑。之后再回到具体比赛页面尝试对照分析。<a href="https://page-zucai.com">足彩网</a> 的赛事详情页附带了简明的术语提示。</div>
+            </div>
+        </div>
+
+        <!-- 底部链接 -->
+        <div class="footer-links">
+            <span>© 2025 · 数据仅供参考</span>
+            <a href="https://page-zucai.com">足彩网</a>
+            <span class="ft-muted">赛前情报 · 赔率变动 · 知识体系</span>
+            <a href="#">隐私说明</a>
+            <a href="#">内容规范</a>
+        </div>
+    </div>
+</body>
+</html>
