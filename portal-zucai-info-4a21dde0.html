@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>足彩网 · 信息资料卡片站</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f1f3f6;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e2a3a;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+        .page-wrap {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* 主视觉 card */
+        .hero-card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.02);
+            padding: 2.5rem 2.2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #eaeef2;
+        }
+        .hero-card h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #0b1c2e;
+            margin-bottom: 0.5rem;
+        }
+        .hero-card h1 small {
+            font-weight: 350;
+            font-size: 1rem;
+            color: #5a6f82;
+            margin-left: 0.6rem;
+        }
+        .hero-card p {
+            color: #2f4052;
+            font-size: 1.05rem;
+            max-width: 780px;
+            margin: 0.75rem 0 0.3rem;
+        }
+        .hero-tagline {
+            display: inline-block;
+            background: #e9edf2;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #1c3046;
+            margin-top: 0.4rem;
+            border: 1px solid #dbe1e9;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.4rem;
+            margin: 2rem 0 1.8rem;
+        }
+        .info-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.6rem 1.5rem 1.8rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02), 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8ed;
+            transition: box-shadow 0.2s ease, transform 0.15s ease;
+        }
+        .info-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05), 0 8px 24px rgba(0,0,0,0.02);
+            transform: translateY(-2px);
+        }
+        .info-card h3 {
+            font-size: 1.1rem;
+            font-weight: 550;
+            color: #132433;
+            margin-bottom: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .info-card h3 i {
+            font-style: normal;
+            background: #e7ecf3;
+            width: 1.6rem;
+            height: 1.6rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #1f3a57;
+        }
+        .info-card ul, .info-card p {
+            color: #2a3e54;
+            font-size: 0.9rem;
+        }
+        .info-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .info-card li {
+            margin-bottom: 0.4rem;
+            padding-left: 0.2rem;
+            position: relative;
+        }
+        .info-card li::before {
+            content: "·";
+            color: #6d7f94;
+            margin-right: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* 段落 + 链接区 */
+        .content-block {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            border: 1px solid #e2e8ed;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+            margin: 1.5rem 0 2rem;
+        }
+        .content-block h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #142b40;
+            margin-bottom: 0.75rem;
+        }
+        .content-block p {
+            color: #1e3146;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+        }
+        .content-block a {
+            color: #1a4d6b;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #a3bacc;
+            transition: border-color 0.15s;
+        }
+        .content-block a:hover {
+            border-bottom-color: #1a4d6b;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 1.5rem 0 0.5rem;
+        }
+        .faq-item {
+            flex: 1 1 180px;
+            background: #f8faff;
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            border: 1px solid #dee6ef;
+        }
+        .faq-item dt {
+            font-weight: 550;
+            color: #152f47;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+        .faq-item dd {
+            color: #2f4560;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 640px) {
+            body { padding: 1.2rem 0.8rem; }
+            .hero-card { padding: 1.6rem 1.4rem; }
+            .hero-card h1 { font-size: 1.7rem; }
+            .content-block { padding: 1.4rem 1.2rem; }
+            .card-grid { gap: 1rem; }
+        }
+        /* 装饰分隔 */
+        .footnote {
+            margin-top: 2.5rem;
+            font-size: 0.75rem;
+            color: #6c7f95;
+            border-top: 1px solid #dce3eb;
+            padding-top: 1.2rem;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- HERO 主视觉卡片 -->
+    <div class="hero-card">
+        <h1>足彩网 <small>· 资料整理与信息索引</small></h1>
+        <p>围绕体育赛事数据、历史对阵统计与主流联赛信息，提供结构化的内容剪辑与索引参考。站点以信息卡片形式组织常用资料模块，减少无关噪声，方便快速查阅。</p>
+        <span class="hero-tagline">📋 聚焦客观数据 · 辅助信息梳理</span>
+    </div>
+
+    <!-- 用途卡片（资料整理视角） -->
+    <div class="card-grid">
+        <div class="info-card">
+            <h3><i>📊</i> 常用数据模块</h3>
+            <ul>
+                <li>联赛积分 / 赛程归档</li>
+                <li>历史交锋记录（近5/10场）</li>
+                <li>主流机构指数变化汇总</li>
+                <li>球员伤停 & 近期表现</li>
+            </ul>
+        </div>
+        <div class="info-card">
+            <h3><i>🗂️</i> 索引结构说明</h3>
+            <ul>
+                <li>按联赛、日期、重要程度分层</li>
+                <li>信息卡片支持快速横向对比</li>
+                <li>减少跳转，单页聚合多项内容</li>
+                <li>持续补充赛季间数据快照</li>
+            </ul>
+        </div>
+        <div class="info-card">
+            <h3><i>📌</i> 适合人群</h3>
+            <ul>
+                <li>信息整理型爱好者</li>
+                <li>需要快速查阅历史数据的用户</li>
+                <li>赛事统计与趋势回顾者</li>
+                <li>不希望被过度营销信息干扰</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 自然链接段落 + 详细说明 -->
+    <div class="content-block">
+        <h2>从资料整理的角度看 <a href="https://portal-zucai.com" style="border-bottom:1px solid #a3bacc;">足彩网</a></h2>
+        <p>
+            信息密度与呈现方式往往影响使用效率。该站点以结构化卡片与分区索引为主要交互形式，将常见赛事资料、历史对照、联赛数据等模块进行归纳，弱化无关跳转，强化单页面内的信息可读性。
+            如果你习惯在分析前先横向对比几项关键数据（例如积分走势、历史对阵、近期得失球），会发现这种卡片布局更接近「资料夹」而非「文章流」。
+        </p>
+        <p>
+            目前页面主要覆盖欧洲主流联赛及部分杯赛数据，模块按「赛季」「赛事类别」「关键时间点」划分，每个卡片都附带简短的上下文说明。整体风格克制，没有弹窗或强制关注引导，
+            更接近个人整理的静态信息页面。无论是用于快速回顾，还是作为赛前资料索引，<a href="https://portal-zucai.com">足彩网</a> 都提供了一个低干扰的查阅环境。
+        </p>
+    </div>
+
+    <!-- FAQ 摘要（信息视角） -->
+    <div style="margin: 0.5rem 0 1rem;">
+        <h3 style="font-weight:450; font-size:1rem; color:#1c314b; margin-bottom:0.6rem;">常见资料问题摘要</h3>
+        <div class="faq-mini">
+            <div class="faq-item">
+                <dt>数据更新频率？</dt>
+                <dd>基于赛事实际时间，通常在赛后12小时内完成基础数据同步，指数类随主流机构更新。</dd>
+            </div>
+            <div class="faq-item">
+                <dt>是否包含深度分析？</dt>
+                <dd>不。页面定位是资料索引与整理，不提供预测或分析结论，所有内容均为客观数据陈列。</dd>
+            </div>
+            <div class="faq-item">
+                <dt>移动端适配如何？</dt>
+                <dd>卡片流式布局，单列显示，关键信息仍保持可读性，无横向滚动干扰。</dd>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚提示 -->
+    <div class="footnote">
+        页面基于信息整理与索引角度设计 · 所有数据仅供参考
+    </div>
+
+</div>
+</body>
+</html>
